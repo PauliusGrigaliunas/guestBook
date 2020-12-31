@@ -14,20 +14,22 @@ public class Guest implements Serializable {
     @Id @GeneratedValue
     Long id;
     private String name;
+    private String surname;
     private Date signingDate;
  
     // Constructors:
     public Guest() {
     }
  
-    public Guest(String name) {
+    public Guest(String name, String surname) {
         this.name = name;
+        this.surname = surname;
         this.signingDate = new Date(System.currentTimeMillis());
     }
  
     // String Representation:
     @Override
     public String toString() {
-        return name + " (signed on " + signingDate + ")";
+        return "ID:" + id + "   |Name:" + name + "   |Surname:" + surname + "   |(signed on " + signingDate + ")";
     }
 }

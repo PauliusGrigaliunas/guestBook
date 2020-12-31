@@ -10,9 +10,19 @@
     </head>
 
     <body>
+        <h2>Guest book</h2>
+        <h3>Add Guest</h3>
         <form method="POST" action="GuestServlet">
             Name: <input type="text" name="name" />
+            Surname: <input type="text" name="surname" />
             <input type="submit" value="Add" />
+        </form>
+        <h3>Search</h3>
+        <form method="GET" action="GuestServlet">
+            ID: <input type="text" name="id" />
+            Name: <input type="text" name="name" />
+            Surname: <input type="text" name="surname" />
+            <input type="submit" value="GET" />
         </form>
 
         <hr><ol> <%
@@ -23,7 +33,5 @@
             } %>
         </ol><hr>
 
-        <iframe src="http://www.objectdb.com/pw.html?web-download"
-            frameborder="0" scrolling="no" width="100%" height="30"></iframe>
      </body>
  </html>
