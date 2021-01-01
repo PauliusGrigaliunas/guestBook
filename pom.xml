@@ -44,6 +44,16 @@
 			<artifactId>tomcat-embed-core</artifactId>
 			<version>7.0.47</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts-tiles</artifactId>
+			<version>1.3.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>3.2.6.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
