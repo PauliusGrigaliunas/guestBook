@@ -6,7 +6,7 @@
 
 <html>
     <head>
-        <title>JPA Guestbook Web Application Tutorial</title>
+        <title>Guests</title>
     </head>
 
     <body>
@@ -64,11 +64,11 @@
             <input type="submit" value="Delete"/>
         </form>
         <hr><ol> <%
-            @SuppressWarnings("unchecked")
             List<Guest> guests = (List<Guest>)request.getAttribute("guests");
             for (Guest guest : guests) { %>
                 <li> <%= guest %> </li> <%
             } %>
         </ol><hr>
+        <a href="index.jsp">Back</a>
      </body>
  </html>
