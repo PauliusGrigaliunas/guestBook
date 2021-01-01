@@ -20,4 +20,24 @@
     <servlet-name>GuestServlet</servlet-name>
     <url-pattern>/GuestServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GuestServletDelete</display-name>
+    <servlet-name>GuestServletDelete</servlet-name>
+    <servlet-class>guest.GuestServletDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GuestServletDelete</servlet-name>
+    <url-pattern>/GuestServletDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GuestServletUpdate</display-name>
+    <servlet-name>GuestServletUpdate</servlet-name>
+    <servlet-class>guest.GuestServletUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GuestServletUpdate</servlet-name>
+    <url-pattern>/GuestServletUpdate</url-pattern>
+  </servlet-mapping>
 </web-app>

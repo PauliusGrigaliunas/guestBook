@@ -19,12 +19,50 @@
         </form>
         <h3>Search</h3>
         <form method="GET" action="GuestServlet">
-            ID: <input type="text" name="id" />
-            Name: <input type="text" name="name" />
-            Surname: <input type="text" name="surname" />
-            <input type="submit" value="GET" />
+            <table>
+                <tr>
+                    <td> User id:</td>
+                    <td><input type="text" name="id"/></td>
+                </tr>
+                <tr>
+                    <td> Name:</td>
+                    <td><input type="text" name="name"/></td>
+                </tr>
+                <tr>
+                    <td> Surname:</td>
+                    <td><input type="text" name="surname"/></td>
+                </tr>
+            </table>
+            <input type="submit" value="Search"/>
         </form>
-
+        <h3>Update</h3>
+        <form method="POST" action="GuestServletUpdate">
+            <table>
+                <tr>
+                    <td> User id:</td>
+                    <td><input type="text" name="id"/></td>
+                </tr>
+                <tr>
+                    <td> Name:</td>
+                    <td><input type="text" name="name"/></td>
+                </tr>
+                <tr>
+                    <td> Surname:</td>
+                    <td><input type="text" name="surname"/></td>
+                </tr>
+            </table>
+            <input type="submit" value="Update"/>
+        </form>
+        <h3>Delete</h3>
+        <form method="POST" action="GuestServletDelete">
+            <table>
+                <tr>
+                    <td> User id:</td>
+                    <td><input type="text" name="id"/></td>
+                </tr>
+            </table>
+            <input type="submit" value="Delete"/>
+        </form>
         <hr><ol> <%
             @SuppressWarnings("unchecked")
             List<Guest> guests = (List<Guest>)request.getAttribute("guests");
@@ -32,6 +70,5 @@
                 <li> <%= guest %> </li> <%
             } %>
         </ol><hr>
-
      </body>
  </html>
