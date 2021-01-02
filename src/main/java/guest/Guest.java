@@ -1,21 +1,25 @@
 package guest;
  
+import accommodation.Accommodation;
+
 import java.io.Serializable;
 import java.sql.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
- 
+import javax.persistence.*;
+import javax.persistence.OneToMany;
+
 @Entity
 public class Guest implements Serializable {
     private static final long serialVersionUID = 1L;
- 
+    /*@ManyToOne(optional=true)
+    private Accommodation accommodation;*/
     // Persistent Fields:
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     private String name;
     private String surname;
     private Date signingDate;
+    @ManyToOne(optional=true)
+    private Accommodation accommodation;
  
     // Constructors:
     public Guest() {

@@ -41,6 +41,23 @@
             <li> <%= accommodation %> </li> <%
                 } %>
         </ol><hr>
+        <h3>Rent</h3>
+        <form method="POST" action="RentServlet">
+            <table>
+                <tr>
+                    <td>Guest id: </td>
+                    <td><input type="number" name="id"/></td>
+                </tr>
+                <tr>
+                    <td>Accommodation nr:</td>
+                    <td><input type="number" name="nr"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Assign"/></td>
+                </tr>
+            </table>
+        </form>
+        <hr>
         <a href="index.jsp">Back</a>
     </body>
 </html>

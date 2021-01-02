@@ -24,8 +24,9 @@ public class HotelRoom extends Accommodation {
     public String toString() {
 
         return "NR:" + super.nr + "   |description: " + super.description + "   |space: "
-                + super.space + "    | door code: " + doorCode + "   |Is ready: "
-                + super.isReady + "   |(" + super.getClass() + ")";
+                + super.space + "    | door code: " + doorCode +  "   |Is ready: "
+                + super.isReady + "   |Guests: " + super.guests + "   |("
+                + super.getClass() + ")";
     }
 }
 

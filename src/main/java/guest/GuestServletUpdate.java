@@ -33,17 +33,14 @@ public class GuestServletUpdate extends HttpServlet {
             if (id != null && !id.isEmpty()) {
                 long idNum = Long.parseLong(id);
                 em.getTransaction().begin();
-                updateCount =
-                        em.createQuery("UPDATE Guest g " +
-                                "SET g.name = :selectedName, g.surname = :selectedSurname " +
-                                "WHERE g.id = :selectedId", Guest.class)
-                                .setParameter("selectedName", name)
-                                .setParameter("selectedSurname", surname)
-                                .setParameter("selectedId", idNum)
-                                .executeUpdate();
+                em.createQuery("UPDATE Guest g " +
+                        "SET g.name = :selectedName, g.surname = :selectedSurname " +
+                        "WHERE g.id = :selectedId", Guest.class)
+                        .setParameter("selectedName", name)
+                        .setParameter("selectedSurname", surname)
+                        .setParameter("selectedId", idNum)
+                        .executeUpdate();
                 em.getTransaction().commit();
-                System.out.println("It updates " + updateCount + " entity(-ies) successfully");
-
             }
             List<Guest> guestList =
                     em.createQuery("SELECT g FROM Guest g", Guest.class).getResultList();

@@ -77,6 +77,30 @@ public class RentServlet extends HttpServlet {
             throws ServletException, IOException {
         EntityManager em = createEntityManager();
         try {
+            String id = request.getParameter("id");
+            String nr = request.getParameter("nr");
+            if(id != null && nr != null){
+                long idNum = Long.parseLong(id);
+                int nrNum = Integer.parseInt(nr);
+                em.getTransaction().begin();
+                List<Guest> guestList = em.createQuery(
+                        "SELECT g FROM Guest g " +
+                        "WHERE  g.id = :selectedId", Guest.class)
+                        .setParameter("selectedId", idNum)
+                        .getResultList();
+                System.out.println(guestList);
+
+                Accommodation accommodation = em.createQuery("SELECT g FROM Accommodation g " +
+                        "WHERE g.nr = :selectedNr", Accommodation.class)
+                        .setParameter("selectedNr", nrNum)
+                        .getSingleResult();
+
+                System.out.println(accommodation);
+                accommodation.AddGuest(guestList);
+
+                em.getTransaction().commit();
+                }
+
             List<Accommodation> accommodationList =
                     em.createQuery("SELECT a FROM Accommodation a", Accommodation.class).getResultList();
             List<Guest> guestList =
