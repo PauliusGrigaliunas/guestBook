@@ -27,6 +27,16 @@
     </table>
     <input type="submit" value="Search"/>
 </form>
+<h3>Delete</h3>
+<form method="POST" action="AccommodationServletDelete">
+    <table>
+        <tr>
+            <td> Accommodation id:</td>
+            <td><input type="text" name="nr"/></td>
+        </tr>
+    </table>
+    <input type="submit" value="Delete"/>
+</form>
 <hr><ol> <%
     List<Accommodation> Accommodations = (List<Accommodation>)request.getAttribute("accommodations");
     for (Accommodation accommodation : Accommodations) { %>

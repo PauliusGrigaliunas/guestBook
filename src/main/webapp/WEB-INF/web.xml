@@ -20,7 +20,16 @@
     <servlet-name>AccommodationServlet</servlet-name>
     <url-pattern>/AccommodationServlet</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <description></description>
+    <display-name>AccommodationServletDelete</display-name>
+    <servlet-name>AccommodationServletDelete</servlet-name>
+    <servlet-class>accommodation.AccommodationServletDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccommodationServletDelete</servlet-name>
+    <url-pattern>/AccommodationServletDelete</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>GuestServlet</display-name>

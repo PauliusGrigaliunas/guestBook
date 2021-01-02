@@ -57,7 +57,7 @@ public class AccommodationServlet extends HttpServlet {
 
             request.setAttribute("accommodations", guestList);
             request.getRequestDispatcher("/accommodation.jsp").forward(request, response);
-            
+
 
         }catch(NumberFormatException nfe)
         {
