@@ -2,11 +2,9 @@ package accommodation;
 
 import guest.Guest;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public abstract class Accommodation implements Serializable {
@@ -14,12 +12,14 @@ public abstract class Accommodation implements Serializable {
 
     // Persistent Fields:
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long nr;
     protected String description;
     protected int space;
     protected Boolean isReady;
-    protected ArrayList<Guest> Guests;
+    @OneToMany(targetEntity=Guest.class, mappedBy="accommodation")
+    @JoinColumn(name="id")
+    protected List<Guest> guests;
 
     public Accommodation(){
 
@@ -37,5 +37,9 @@ public abstract class Accommodation implements Serializable {
         this.isReady = isReady;
     }
 
+    public void AddGuest(List<Guest> newGuests){
+        guests.addAll(newGuests);
+
+    }
 
 }

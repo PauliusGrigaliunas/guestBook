@@ -2,10 +2,10 @@
 <%@page import="java.util.*,accommodation.Accommodation" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Accommodations</title>
 </head>
 <body>
-<h2>Accommodation</h2>
+<h2>Accommodations</h2>
 <h3>Add Accommodation</h3>
 <form method="POST" action="AccommodationServlet">
     Description: <input type="text" name="decription"/>
