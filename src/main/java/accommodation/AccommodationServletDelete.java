@@ -1,7 +1,5 @@
 package accommodation;
 
-import guest.Guest;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
@@ -13,7 +11,6 @@ import java.util.List;
 
 public class AccommodationServletDelete extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private Object UserDataService;
 
     private EntityManager createEntityManager() {
         EntityManagerFactory emf =

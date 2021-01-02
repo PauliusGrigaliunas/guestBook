@@ -7,8 +7,9 @@ import java.util.Random;
 public class HotelRoom extends Accommodation {
     protected int doorCode;
 
-    public HotelRoom(){
+    public HotelRoom() {
     }
+
     public HotelRoom(String description, int space) {
         super(description, space);
         doorCode = new Random().nextInt(10000);
@@ -23,7 +24,7 @@ public class HotelRoom extends Accommodation {
     public String toString() {
 
         return "NR:" + super.nr + "   |description: " + super.description + "   |space: "
-                + super.space + "    | door code: " + doorCode  + "   |Is ready: "
+                + super.space + "    | door code: " + doorCode + "   |Is ready: "
                 + super.isReady + "   |(" + super.getClass() + ")";
     }
 }

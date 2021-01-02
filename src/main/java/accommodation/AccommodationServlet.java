@@ -1,7 +1,5 @@
 package accommodation;
 
-import guest.Guest;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
@@ -14,7 +12,6 @@ import java.util.List;
 
 public class AccommodationServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private Object UserDataService;
 
     private EntityManager createEntityManager() {
         EntityManagerFactory emf =
@@ -43,7 +40,7 @@ public class AccommodationServlet extends HttpServlet {
                                 "WHERE  a.space = :selectedSpace " +
                                 "AND a.description LIKE :selectedDescription ", Accommodation.class)
                                 .setParameter("selectedSpace", spaceNum)
-                                .setParameter("selectedDescription", "%" +description + "%")
+                                .setParameter("selectedDescription", "%" + description + "%")
                                 .getResultList();
 
             } else {
@@ -59,8 +56,7 @@ public class AccommodationServlet extends HttpServlet {
             request.getRequestDispatcher("/accommodation.jsp").forward(request, response);
 
 
-        }catch(NumberFormatException nfe)
-        {
+        } catch (NumberFormatException nfe) {
             System.out.println("Can not convert space input to number!");
             throw nfe;
         } finally {
@@ -86,10 +82,9 @@ public class AccommodationServlet extends HttpServlet {
             if (!decription.isEmpty()) {
                 em.getTransaction().begin();
                 Accommodation accommodation;
-                if(isHouse == null){
+                if (isHouse == null) {
                     accommodation = new HotelRoom(decription, Integer.parseInt(space));
-                }
-                else{
+                } else {
                     accommodation = new House(decription, Integer.parseInt(space));
                 }
                 em.persist(accommodation);

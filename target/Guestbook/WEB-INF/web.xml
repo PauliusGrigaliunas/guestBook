@@ -22,6 +22,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>AccommodationServletUpdate</display-name>
+    <servlet-name>AccommodationServletUpdate</servlet-name>
+    <servlet-class>accommodation.AccommodationServletUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccommodationServletUpdate</servlet-name>
+    <url-pattern>/AccommodationServletUpdate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>AccommodationServletDelete</display-name>
     <servlet-name>AccommodationServletDelete</servlet-name>
     <servlet-class>accommodation.AccommodationServletDelete</servlet-class>

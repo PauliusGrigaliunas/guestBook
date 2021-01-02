@@ -22,7 +22,7 @@
             <table>
                 <tr>
                     <td> User id:</td>
-                    <td><input type="text" name="id"/></td>
+                    <td><input type="number" name="id"/></td>
                 </tr>
                 <tr>
                     <td> Name:</td>
@@ -40,7 +40,7 @@
             <table>
                 <tr>
                     <td> User id:</td>
-                    <td><input type="text" name="id"/></td>
+                    <td><input type="number" name="id"/></td>
                 </tr>
                 <tr>
                     <td> Name:</td>
@@ -58,7 +58,7 @@
             <table>
                 <tr>
                     <td> User id:</td>
-                    <td><input type="text" name="id"/></td>
+                    <td><input type="number" name="id"/></td>
                 </tr>
             </table>
             <input type="submit" value="Delete"/>
