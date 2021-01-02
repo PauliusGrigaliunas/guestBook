@@ -1,5 +1,7 @@
 package accommodation;
 
+import guest.Guest;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
@@ -32,27 +34,15 @@ public class AccommodationServlet extends HttpServlet {
             String space = request.getParameter("space");
 
             // Display the list of guests:
-            List<Accommodation> guestList;
-            if (space != null && !space.isEmpty()) {
-                long spaceNum = Long.parseLong(space);
-                guestList =
-                        em.createQuery("SELECT a FROM Accommodation a " +
-                                "WHERE  a.space = :selectedSpace " +
-                                "AND a.description LIKE :selectedDescription ", Accommodation.class)
-                                .setParameter("selectedSpace", spaceNum)
-                                .setParameter("selectedDescription", "%" + description + "%")
-                                .getResultList();
-
+            List<Accommodation> accommodationList;
+            if (description == null && space == null ) {
+                accommodationList =
+                        em.createQuery("SELECT a FROM Accommodation a", Accommodation.class).getResultList();
             } else {
-                guestList =
-                        em.createQuery("SELECT a FROM Accommodation a " +
-                                "WHERE a.description LIKE :selectedDescription ", Accommodation.class)
-                                .setParameter("selectedDescription", "%" + description + "%")
-                                .getResultList();
-
+                accommodationList = new AccommodationSearch().Search(em, description, space);
             }
 
-            request.setAttribute("accommodations", guestList);
+            request.setAttribute("accommodations", accommodationList);
             request.getRequestDispatcher("/accommodation.jsp").forward(request, response);
 
 
@@ -101,5 +91,4 @@ public class AccommodationServlet extends HttpServlet {
             em.close();
         }
     }
-
 }

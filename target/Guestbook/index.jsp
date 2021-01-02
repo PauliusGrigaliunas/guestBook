@@ -6,7 +6,16 @@
     </head>
     <body>
         <h1>Welcome To Guest book</h1>
-        <a href="GuestServlet">Guests</a>
-        <a href="AccommodationServlet">Accommodation</a>
+        <table>
+            <tr>
+                <td><a href="GuestServlet">Guests</a></td>
+            </tr>
+            <tr>
+                <td><a href="AccommodationServlet">Accommodation</a></td>
+            </tr>
+            <tr>
+                <td><a href="RentServlet">Rent</a></td>
+            </tr>
+        </table>
     </body>
 </html>

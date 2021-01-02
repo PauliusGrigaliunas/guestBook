@@ -70,4 +70,14 @@
     <servlet-name>GuestServletUpdate</servlet-name>
     <url-pattern>/GuestServletUpdate</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RentServlet</display-name>
+    <servlet-name>RentServlet</servlet-name>
+    <servlet-class>rent.RentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RentServlet</servlet-name>
+    <url-pattern>/RentServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

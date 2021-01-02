@@ -31,23 +31,10 @@ public class GuestServlet extends HttpServlet {
 
             // Display the list of guests:
             List<Guest> guestList;
-            if (id != null && !id.isEmpty()) {
-                long idNum = Long.parseLong(id);
-                guestList =
-                        em.createQuery("SELECT g FROM Guest g " +
-                                "WHERE  g.id = :selectedId", Guest.class)
-                                .setParameter("selectedId", idNum)
-                                .getResultList();
-
+            if (id == null && name == null && surname == null) {
+                guestList = em.createQuery("SELECT g FROM Guest g", Guest.class).getResultList();
             } else {
-                guestList =
-                        em.createQuery("SELECT g FROM Guest g " +
-                                "WHERE  g.name LIKE :selectedName " +
-                                "AND g.surname LIKE :selectedSurname ", Guest.class)
-                                .setParameter("selectedName", "%" + name + "%")
-                                .setParameter("selectedSurname", "%" + surname + "%")
-                                .getResultList();
-
+                guestList = new GuestSearch().Search(em, id, name, surname);
             }
 
             request.setAttribute("guests", guestList);
@@ -76,8 +63,9 @@ public class GuestServlet extends HttpServlet {
                 em.persist(new Guest(name, surname));
                 em.getTransaction().commit();
             }
-            List<Guest> guestList =
-                    em.createQuery("SELECT g FROM Guest g", Guest.class).getResultList();
+
+            List<Guest> guestList = em.createQuery("SELECT g FROM Guest g", Guest.class).getResultList();
+
             request.setAttribute("guests", guestList);
             request.getRequestDispatcher("/guest.jsp").forward(request, response);
 
@@ -87,5 +75,6 @@ public class GuestServlet extends HttpServlet {
             em.close();
         }
     }
+
 
 }

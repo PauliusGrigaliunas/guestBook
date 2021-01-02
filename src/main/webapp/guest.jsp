@@ -21,7 +21,7 @@
         <form method="GET" action="GuestServlet">
             <table>
                 <tr>
-                    <td> User id:</td>
+                    <td> Guest id:</td>
                     <td><input type="number" name="id"/></td>
                 </tr>
                 <tr>
