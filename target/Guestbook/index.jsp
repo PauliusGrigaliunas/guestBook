@@ -7,6 +7,6 @@
     <body>
         <h1>Welcome To Guest book</h1>
         <a href="GuestServlet">Guests</a>
-        <a href="accommodation.jsp">Accommodation</a>
+        <a href="AccommodationServlet">Accommodation</a>
     </body>
 </html>

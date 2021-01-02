@@ -5,11 +5,41 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <listener>
-    <listener-class>guest.GuestListener</listener-class>
+    <listener-class>guestBook.GuestListener</listener-class>
   </listener>
   <listener>
-    <listener-class>guest.GuestListener</listener-class>
+    <listener-class>guestBook.GuestListener</listener-class>
   </listener>
+  <servlet>
+    <description></description>
+    <display-name>AccommodationServlet</display-name>
+    <servlet-name>AccommodationServlet</servlet-name>
+    <servlet-class>accommodation.AccommodationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccommodationServlet</servlet-name>
+    <url-pattern>/AccommodationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccommodationServletUpdate</display-name>
+    <servlet-name>AccommodationServletUpdate</servlet-name>
+    <servlet-class>accommodation.AccommodationServletUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccommodationServletUpdate</servlet-name>
+    <url-pattern>/AccommodationServletUpdate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccommodationServletDelete</display-name>
+    <servlet-name>AccommodationServletDelete</servlet-name>
+    <servlet-class>accommodation.AccommodationServletDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccommodationServletDelete</servlet-name>
+    <url-pattern>/AccommodationServletDelete</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>GuestServlet</display-name>

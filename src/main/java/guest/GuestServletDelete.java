@@ -11,7 +11,6 @@ import java.util.List;
 
 public class GuestServletDelete extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private Object UserDataService;
 
     private EntityManager createEntityManager() {
         EntityManagerFactory emf =
