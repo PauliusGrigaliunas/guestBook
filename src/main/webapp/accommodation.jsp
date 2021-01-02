@@ -13,6 +13,20 @@
     House: <input type="checkbox" name="isHouse" />
     <input type="submit" value="Add" />
 </form>
+<h3>Search</h3>
+<form method="GET" action="AccommodationServlet">
+    <table>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" name="description"/></td>
+        </tr>
+        <tr>
+            <td>Space:</td>
+            <td><input type="text" name="space"/></td>
+        </tr>
+    </table>
+    <input type="submit" value="Search"/>
+</form>
 <hr><ol> <%
     List<Accommodation> Accommodations = (List<Accommodation>)request.getAttribute("accommodations");
     for (Accommodation accommodation : Accommodations) { %>
