@@ -96,7 +96,7 @@ public class RentServlet extends HttpServlet {
                         .getSingleResult();
 
                 System.out.println(accommodation);
-                accommodation.AddGuest(guestList);
+                accommodation.AddGuests(guestList);
 
                 em.getTransaction().commit();
                 }

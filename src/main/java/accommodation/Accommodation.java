@@ -37,9 +37,11 @@ public abstract class Accommodation implements Serializable {
         this.isReady = isReady;
     }
 
-    public void AddGuest(List<Guest> newGuests){
+    public void AddGuests(List<Guest> newGuests){
         guests.addAll(newGuests);
-
     }
 
+    public List<Guest> GetGuests(){
+        return guests;
+    }
 }
