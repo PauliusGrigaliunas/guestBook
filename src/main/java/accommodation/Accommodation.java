@@ -46,6 +46,14 @@ public abstract class Accommodation implements Serializable {
         }
     }
 
+    public void RemoveGuest (List<Guest> newGuests){
+        for (Guest guest : newGuests) {
+            if(guests.contains(guest)){
+                guests.remove(guest);
+            }
+        }
+    }
+
     public List<Guest> GetGuests(){
         return guests;
     }

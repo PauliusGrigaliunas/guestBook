@@ -80,4 +80,14 @@
     <servlet-name>RentServlet</servlet-name>
     <url-pattern>/RentServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RentServletDelete</display-name>
+    <servlet-name>RentServletDelete</servlet-name>
+    <servlet-class>rent.RentServletDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RentServletDelete</servlet-name>
+    <url-pattern>/RentServletDelete</url-pattern>
+  </servlet-mapping>
 </web-app>
