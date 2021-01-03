@@ -5,7 +5,7 @@ import java.util.List;
 
 public class GuestSearch {
     public List<Guest> Search(EntityManager em, String id, String name, String surname) {
-        List<Guest> guestList;
+
         if (id != null && !id.isEmpty()) {
             long idNum = Long.parseLong(id);
             return em.createQuery("SELECT g FROM Guest g " +

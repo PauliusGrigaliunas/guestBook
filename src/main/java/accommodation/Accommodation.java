@@ -18,7 +18,6 @@ public abstract class Accommodation implements Serializable {
     protected int space;
     protected Boolean isReady;
     @OneToMany(targetEntity=Guest.class, mappedBy="accommodation")
-    @JoinColumn(name="id")
     protected List<Guest> guests;
 
     public Accommodation(){
@@ -37,9 +36,24 @@ public abstract class Accommodation implements Serializable {
         this.isReady = isReady;
     }
 
-    public void AddGuest(List<Guest> newGuests){
-        guests.addAll(newGuests);
+    public void AddGuests(List<Guest> newGuests){
+        for (Guest guest : newGuests) {
+            if(!guests.contains(guest)){
+                guests.add(guest);
 
+            }
+        }
     }
 
+    public void RemoveGuest (List<Guest> newGuests){
+        for (Guest guest : newGuests) {
+            if(guests.contains(guest)){
+                guests.remove(guest);
+            }
+        }
+    }
+
+    public List<Guest> GetGuests(){
+        return guests;
+    }
 }

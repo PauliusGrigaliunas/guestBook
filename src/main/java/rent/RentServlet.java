@@ -43,6 +43,7 @@ public class RentServlet extends HttpServlet {
 
             List<Guest> guestList;
             List<Accommodation> accommodationList;
+            List<Accommodation> extraAccommodationList;
             if (id == null && name == null && surname == null &&
                     description == null && space == null) {
                 guestList =
@@ -88,17 +89,19 @@ public class RentServlet extends HttpServlet {
                         "WHERE  g.id = :selectedId", Guest.class)
                         .setParameter("selectedId", idNum)
                         .getResultList();
-                System.out.println(guestList);
 
-                Accommodation accommodation = em.createQuery("SELECT g FROM Accommodation g " +
-                        "WHERE g.nr = :selectedNr", Accommodation.class)
+                Accommodation accommodation = em.createQuery("SELECT a FROM Accommodation a " +
+                        "WHERE a.nr = :selectedNr", Accommodation.class)
                         .setParameter("selectedNr", nrNum)
                         .getSingleResult();
 
-                System.out.println(accommodation);
-                accommodation.AddGuest(guestList);
+                accommodation.AddGuests(guestList);
+                for(Guest guest : guestList){
+                    guest.SetAccommodation(accommodation);
+                }
 
                 em.getTransaction().commit();
+
                 }
 
             List<Accommodation> accommodationList =
