@@ -10,8 +10,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Guest implements Serializable {
     private static final long serialVersionUID = 1L;
-    /*@ManyToOne(optional=true)
-    private Accommodation accommodation;*/
     // Persistent Fields:
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -30,7 +28,11 @@ public class Guest implements Serializable {
         this.surname = surname;
         this.signingDate = new Date(System.currentTimeMillis());
     }
- 
+
+    public void SetAccomodation (Accommodation accommodation){
+        this.accommodation = accommodation;
+    }
+
     // String Representation:
     @Override
     public String toString() {

@@ -38,7 +38,12 @@ public abstract class Accommodation implements Serializable {
     }
 
     public void AddGuests(List<Guest> newGuests){
-        guests.addAll(newGuests);
+        for (Guest guest : newGuests) {
+            if(!guests.contains(guest)){
+                guests.add(guest);
+
+            }
+        }
     }
 
     public List<Guest> GetGuests(){

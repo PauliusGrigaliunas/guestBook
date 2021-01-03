@@ -43,6 +43,7 @@ public class RentServlet extends HttpServlet {
 
             List<Guest> guestList;
             List<Accommodation> accommodationList;
+            List<Accommodation> extraAccommodationList;
             if (id == null && name == null && surname == null &&
                     description == null && space == null) {
                 guestList =
@@ -52,6 +53,11 @@ public class RentServlet extends HttpServlet {
             } else {
                 guestList = new GuestSearch().Search(em, id, name, surname);
                 accommodationList = new AccommodationSearch().Search(em, description, space);
+                extraAccommodationList = em.createQuery("SELECT a FROM Accommodation a " +
+                        "WHERE a.get = :selectedSpace " +
+                        "AND a.description LIKE :selectedDescription ", Accommodation.class).getResultList();
+
+
             }
 
             request.setAttribute("guests", guestList);
@@ -88,17 +94,19 @@ public class RentServlet extends HttpServlet {
                         "WHERE  g.id = :selectedId", Guest.class)
                         .setParameter("selectedId", idNum)
                         .getResultList();
-                System.out.println(guestList);
 
-                Accommodation accommodation = em.createQuery("SELECT g FROM Accommodation g " +
-                        "WHERE g.nr = :selectedNr", Accommodation.class)
+                Accommodation accommodation = em.createQuery("SELECT a FROM Accommodation a " +
+                        "WHERE a.nr = :selectedNr", Accommodation.class)
                         .setParameter("selectedNr", nrNum)
                         .getSingleResult();
 
-                System.out.println(accommodation);
                 accommodation.AddGuests(guestList);
+                for(Guest guest : guestList){
+                    guest.SetAccomodation(accommodation);
+                }
 
                 em.getTransaction().commit();
+
                 }
 
             List<Accommodation> accommodationList =
