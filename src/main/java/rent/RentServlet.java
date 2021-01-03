@@ -53,11 +53,6 @@ public class RentServlet extends HttpServlet {
             } else {
                 guestList = new GuestSearch().Search(em, id, name, surname);
                 accommodationList = new AccommodationSearch().Search(em, description, space);
-                extraAccommodationList = em.createQuery("SELECT a FROM Accommodation a " +
-                        "WHERE a.get = :selectedSpace " +
-                        "AND a.description LIKE :selectedDescription ", Accommodation.class).getResultList();
-
-
             }
 
             request.setAttribute("guests", guestList);
