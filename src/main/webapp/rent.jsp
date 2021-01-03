@@ -7,6 +7,7 @@
     </head>
     <body>
         <h2>Rents</h2>
+        <h3>Search</h3>
         <form method="GET" action="RentServlet">
             <table>
                 <tr>
@@ -22,6 +23,22 @@
                     <td><input type="text" name="description"/></td>
                     <td>Space:</td>
                     <td><input type="number" name="space"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Search"/></td>
+                </tr>
+            </table>
+        </form>
+
+        <form method="GET" action="RentServletDelete">
+            <table>
+                <tr>
+                    <td>Guest id: </td>
+                    <td><input type="number" name="id"/></td>
+                    <td>Name:</td>
+                    <td><input type="text" name="name"/></td>
+                    <td>Surname:</td>
+                    <td><input type="text" name="surname"/></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Search"/></td>

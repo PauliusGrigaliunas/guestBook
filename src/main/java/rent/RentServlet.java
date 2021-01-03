@@ -97,7 +97,7 @@ public class RentServlet extends HttpServlet {
 
                 accommodation.AddGuests(guestList);
                 for(Guest guest : guestList){
-                    guest.SetAccomodation(accommodation);
+                    guest.SetAccommodation(accommodation);
                 }
 
                 em.getTransaction().commit();

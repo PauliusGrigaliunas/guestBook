@@ -19,7 +19,7 @@ public abstract class Accommodation implements Serializable {
     protected Boolean isReady;
     @OneToMany(targetEntity=Guest.class, mappedBy="accommodation")
     @JoinColumn(name="id")
-    protected List<Guest> guests;
+    public List<Guest> guests;
 
     public Accommodation(){
 

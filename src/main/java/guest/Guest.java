@@ -29,7 +29,7 @@ public class Guest implements Serializable {
         this.signingDate = new Date(System.currentTimeMillis());
     }
 
-    public void SetAccomodation (Accommodation accommodation){
+    public void SetAccommodation(Accommodation accommodation){
         this.accommodation = accommodation;
     }
 

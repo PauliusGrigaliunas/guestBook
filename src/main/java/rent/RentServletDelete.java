@@ -1,7 +1,6 @@
 package rent;
 
 import accommodation.Accommodation;
-import accommodation.AccommodationSearch;
 import guest.Guest;
 import guest.GuestSearch;
 
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -33,13 +33,33 @@ public class RentServletDelete extends HttpServlet {
         EntityManager em = createEntityManager();
 
         try {
+            String id = request.getParameter("id");
+            String name = request.getParameter("name");
+            String surname = request.getParameter("surname");
 
-            List<Guest> guestList =
-                    em.createQuery("SELECT g FROM Guest g", Guest.class).getResultList();
-            List<Accommodation> accommodationList =
-                    em.createQuery("SELECT a FROM Accommodation a", Accommodation.class).getResultList();
+            List <Accommodation> accommodationList =
+                    em.createQuery("SELECT a FROM Accommodation a", Accommodation.class)
+                            .getResultList();
 
+            List <Guest> guestList = new GuestSearch().Search(em, id, name, surname);
 
+/*
+            List <Accommodation> newAccommodationList = Collections.emptyList();
+            List <Guest> guestList = new GuestSearch().Search(em, id, name, surname);
+            System.out.println(guestList);
+
+            List <Accommodation> accommodationList =
+                    em.createQuery("SELECT a FROM Accommodation a ", Accommodation.class)
+                            .getResultList();
+
+            for (Accommodation accommodation : accommodationList){
+                System.out.println(accommodation.guests);
+                if (accommodation.guests.<Guest>get(0).toString() == guestList){
+                    newAccommodationList.add(accommodation);
+                }
+
+            }
+*/
             request.setAttribute("guests", guestList);
             request.setAttribute("accommodations", accommodationList);
             request.getRequestDispatcher("/rent.jsp").forward(request, response);
@@ -65,14 +85,14 @@ public class RentServletDelete extends HttpServlet {
         try {
             String id = request.getParameter("id");
             String nr = request.getParameter("nr");
-            if(id != null && nr != null){
+            if (id != null && nr != null) {
                 long idNum = Long.parseLong(id);
                 int nrNum = Integer.parseInt(nr);
                 em.getTransaction().begin();
 
                 List<Guest> guestList = em.createQuery(
                         "SELECT g FROM Guest g " +
-                        "WHERE  g.id = :selectedId", Guest.class)
+                                "WHERE  g.id = :selectedId", Guest.class)
                         .setParameter("selectedId", idNum)
                         .getResultList();
 
@@ -82,13 +102,13 @@ public class RentServletDelete extends HttpServlet {
                         .getSingleResult();
 
                 accommodation.RemoveGuest(guestList);
-                for(Guest guest : guestList){
-                    guest.SetAccomodation(null);
+                for (Guest guest : guestList) {
+                    guest.SetAccommodation(null);
                 }
 
                 em.getTransaction().commit();
 
-                }
+            }
 
             List<Accommodation> accommodationList =
                     em.createQuery("SELECT a FROM Accommodation a", Accommodation.class).getResultList();
