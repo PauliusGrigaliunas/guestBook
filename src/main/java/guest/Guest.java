@@ -33,6 +33,10 @@ public class Guest implements Serializable {
         this.accommodation = accommodation;
     }
 
+
+    public Accommodation GetAccommodation(){
+        return accommodation;
+    }
     // String Representation:
     @Override
     public String toString() {

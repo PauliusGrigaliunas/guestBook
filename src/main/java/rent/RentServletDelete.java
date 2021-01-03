@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -37,33 +37,16 @@ public class RentServletDelete extends HttpServlet {
             String name = request.getParameter("name");
             String surname = request.getParameter("surname");
 
-            List <Accommodation> accommodationList =
-                    em.createQuery("SELECT a FROM Accommodation a", Accommodation.class)
-                            .getResultList();
-
             List <Guest> guestList = new GuestSearch().Search(em, id, name, surname);
 
-/*
-            List <Accommodation> newAccommodationList = Collections.emptyList();
-            List <Guest> guestList = new GuestSearch().Search(em, id, name, surname);
-            System.out.println(guestList);
+            List <Accommodation> accommodationList = new ArrayList<Accommodation>();
 
-            List <Accommodation> accommodationList =
-                    em.createQuery("SELECT a FROM Accommodation a ", Accommodation.class)
-                            .getResultList();
-
-            for (Accommodation accommodation : accommodationList){
-                System.out.println(accommodation.guests);
-                if (accommodation.guests.<Guest>get(0).toString() == guestList){
-                    newAccommodationList.add(accommodation);
-                }
-
+            for(Guest guest: guestList){
+                accommodationList.add(guest.GetAccommodation());
             }
-*/
             request.setAttribute("guests", guestList);
             request.setAttribute("accommodations", accommodationList);
             request.getRequestDispatcher("/rent.jsp").forward(request, response);
-
 
         } catch (NumberFormatException nfe) {
             System.out.println("Can not convert space input to number!");
@@ -74,7 +57,6 @@ public class RentServletDelete extends HttpServlet {
                 em.getTransaction().rollback();
             em.close();
         }
-
     }
 
     @Override
@@ -105,9 +87,7 @@ public class RentServletDelete extends HttpServlet {
                 for (Guest guest : guestList) {
                     guest.SetAccommodation(null);
                 }
-
                 em.getTransaction().commit();
-
             }
 
             List<Accommodation> accommodationList =

@@ -29,7 +29,7 @@
                 </tr>
             </table>
         </form>
-
+        <h3>Search accommodation by guest</h3>
         <form method="GET" action="RentServletDelete">
             <table>
                 <tr>
